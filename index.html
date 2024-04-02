@@ -1,50 +1,74 @@
-<!DOCTYPE HTML>
-<!--
-	Astral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    /* Global styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #003366;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        background-color: #003366;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    .error {
+        color: red;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
 
-		<!-- Wrapper-->
-			<div id="wrapper">
+<header>
+    <h1>Login Page</h1>
+</header>
 
-				<!-- Main -->
-					<div id="main">
+<div class="container">
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Login">
+    </form>
+    <div class="error" id="error-message"></div>
+</div>
 
-						<!-- Me -->
-							<article id="home" class="panel intro">
-								<header>
-									<h3>Hello, This is DurgaBhavana Gadupudi. Welcome to my portfolio!</h3>
-									<p>I am an International student Pursing Masters in Computer Science. Currently, I am working as a Graduate Assistant in the department of Interdisciplinary Studies .</p>
-									<div style="display: flex;">
-										<br><a href="https://drive.google.com/file/d/1Ftp1nCGDtkY_dMFpQrrgHOVJeKgqz6r3/view?usp=sharing" class="button big" style="
-										margin-right: 10px;
-										height: fit-content;
-									">Resume</a>
-										<br><a href="Login.html" class="button big" style="margin-right: 13px;height: fit-content;"><label>Website link</label></a>
-										
-										<br><a href="HW3-Gadupudi.pdf" class="button big" ><Label>Prototype Description</Label></a>
-									</div>
-										
-								</header>
-								<a href="#work" class="jumplink pic">
-									<img src="images/Img.jpeg" alt="" />
-								</a>
-							</article>
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
 
-	</body>
+        // Redirect to the index page
+        window.location.href = 'menu.html';
+    });
+</script>
+
+</body>
 </html>
