@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Page</title>
+<style>
+    /* Global styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #003366;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    h2 {
+        margin-top: 20px;
+    }
+    p {
+        margin-bottom: 10px;
+    }
+    #cart {
+        margin-top: 20px;
+    }
+    #payment-methods {
+        margin-top: 20px;
+    }
+    #card-details {
+        display: none;
+    }
+    .btn-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Payment Page</h1>
+</header>
+
+<div class="container">
+    <h2>Items in Cart</h2>
+    <div id="cart"></div>
+    <h2>Total Amount</h2>
+    <p id="total-amount"></p>
+    <h2>Select Payment Method</h2>
+    <form id="payment-methods">
+        <input type="radio" id="meal-exchange" name="payment" value="meal-exchange">
+        <label for="meal-exchange">Meal Exchange</label><br>
+        <input type="radio" id="flex-points" name="payment" value="flex-points">
+        <label for="flex-points">Flex Points</label><br>
+        <input type="radio" id="credit-debit-card" name="payment" value="credit-debit-card">
+        <label for="credit-debit-card">Credit/Debit Card</label><br>
+    </form>
+    <div id="card-details">
+        <h2>Card Details</h2>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number"><br><br>
+        <label for="expiration-date">Expiration Date:</label>
+        <input type="text" id="expiration-date"><br><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv"><br><br>
+    </div>
+    <button id="place-order-btn">Place Order</button>
+</div>
+<div class="btn-container">
+    <button id="home-btn" class="btn" onclick="goToHomePage()">Home</button>
+    <button id="back-btn" class="btn" onclick="goBack()">Back</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve items from local storage
+        const cartItemsWithPrices = JSON.parse(localStorage.getItem('cartItemsWithPrices'));
+        const cartContainer = document.getElementById('cart');
+
+        // Clear previous content
+        cartContainer.innerHTML = '';
+
+        // Display each item in the cart
+        if (cartItemsWithPrices && cartItemsWithPrices.length > 0) {
+            cartItemsWithPrices.forEach(item => {
+                const itemElement = document.createElement('p');
+                itemElement.textContent = item;
+                cartContainer.appendChild(itemElement);
+            });
+        } else {
+            const emptyCartMessage = document.createElement('p');
+            emptyCartMessage.textContent = 'Your cart is empty';
+            cartContainer.appendChild(emptyCartMessage);
+        }
+
+        // Calculate and display total amount
+        const totalAmountElement = document.getElementById('total-amount');
+        const totalAmount = cartItemsWithPrices.reduce((total, item) => {
+            const price = parseFloat(item.split(', ')[1].replace('$', ''));
+            return total + price;
+        }, 0);
+        totalAmountElement.textContent = 'Total: $' + totalAmount.toFixed(2);
+    });
+    function goToHomePage() {
+        window.location.href = 'menu.html';
+    }
+
+    // Function to navigate back to previous page
+    function goBack() {
+        window.history.back();
+    }
+
+    // Event listener for "Place Order" button
+    // Event listener for "Place Order" button
+document.getElementById('place-order-btn').addEventListener('click', function() {
+    // Check selected payment method
+    const paymentMethod = document.querySelector('input[name="payment"]:checked');
+    if (!paymentMethod) {
+        alert('Please select a payment method.');
+        return;
+    }
+
+    // If Credit/Debit Card is selected, prompt for card details
+    if (paymentMethod.value === 'credit-debit-card') {
+        const cardNumber = document.getElementById('card-number').value;
+        const expirationDate = document.getElementById('expiration-date').value;
+        const cvv = document.getElementById('cvv').value;
+
+        // Validate card details
+        if (!cardNumber || !expirationDate || !cvv) {
+            alert('Please enter valid card details.');
+            return;
+        }
+    }
+
+    // Clear cart items from local storage after placing the order
+    localStorage.removeItem('cartItemsWithPrices');
+
+    // Redirect to the estimated time and order status page
+    window.location.href = 'status.html';
+  
+});
+
+</script>
+
+</body>
+</html>

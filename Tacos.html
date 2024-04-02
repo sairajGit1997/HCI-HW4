@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tacos Section Menu</title>
+<style>
+    /* Global styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #003366;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+    h2 {
+        margin-top: 20px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+    .add-to-cart,
+    .proceed-to-checkout {
+        display: block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #003366;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Broderick Dining Commons</h1>
+    <p>Tacos Section Menu</p>
+</header>
+
+<div class="container">
+    <h2>Tacos Menu</h2>
+    <form id="menu-form">
+        <ul>
+            <li><input type="checkbox" id="crunchy chicken-taco" name="item" value="crunchy chicken-taco, $4.99"> crunchy chicken-taco - $4.99</li>
+            <li><input type="checkbox" id="soft chicken-taco" name="item" value="soft chicken-taco, $4.99"> soft chicken-taco - $4.99</li>
+            <li><input type="checkbox" id="vegetarian-taco" name="item" value="Vegetarian Taco, $3.99"> Vegetarian Taco - $3.99</li>
+            <li><input type="checkbox" id="shrimp-taco" name="item" value="shrimp-taco, $5.99"> shrimp-taco - $5.99</li>
+        </ul>
+        <button type="button" class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+        <button type="button" class="proceed-to-checkout" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </form>
+</div>
+
+<script src="cart.js"></script>
+
+</body>
+</html>
