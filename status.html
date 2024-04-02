@@ -45,5 +45,21 @@
     <p>Your order is currently being prepared.</p>
 </div>
 
+<div class="btn-container">
+    <button id="home-btn" class="btn" onclick="goToHomePage()">Home</button>
+    <button id="back-btn" class="btn" onclick="goBack()">Back</button>
+</div>
+
+<script>
+    function goToHomePage() {
+        window.location.href = 'menu.html';
+    }
+
+    // Function to navigate back to previous page
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
 </body>
 </html>
